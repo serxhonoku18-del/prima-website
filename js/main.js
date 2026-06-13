@@ -8,66 +8,16 @@
 
   var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* ---------- Background video playback (mobile-first, bulletproof) ----------
-     Sources live in the HTML <source> (the most reliable way to autoplay on iOS).
-     Here we: force muted/inline, upgrade the hero to a crisper file on desktop,
-     keep retrying play(), and start on the first user gesture if the OS blocked
-     autoplay (e.g. iOS Low Power Mode / Android Data Saver). */
+  /* ---------- Preloader dismiss — set up FIRST so it can never get stranded ----------
+     Whatever happens with the video, the loading screen always goes away and
+     scroll always unlocks (hard fallback + tap-to-skip). */
   (function () {
-    var videos = Array.prototype.slice.call(document.querySelectorAll("video"));
-    if (!videos.length) return;
-
-    var small = window.matchMedia("(max-width: 768px)").matches;
-    var save = navigator.connection && navigator.connection.saveData;
-
-    function tryPlay(v) {
-      if (prefersReducedMotion) return;
-      var p = v.play();
-      if (p && p.catch) p.catch(function () {});
-    }
-
-    videos.forEach(function (v) {
-      v.muted = true;                 // required for autoplay everywhere
-      v.setAttribute("muted", "");
-      v.playsInline = true;
-      v.setAttribute("playsinline", "");
-      v.setAttribute("webkit-playsinline", "");
-
-      if (prefersReducedMotion) { v.removeAttribute("autoplay"); v.pause(); return; }
-
-      // Desktop only: upgrade the hero to webm / 1080p (the swap is hidden behind the preloader).
-      if (!small && !save && v.classList.contains("hero-video")) {
-        var hi = (v.getAttribute("data-webm") && v.canPlayType('video/webm; codecs="vp9"'))
-          ? v.getAttribute("data-webm")
-          : v.getAttribute("data-desktop");
-        if (hi) { v.src = hi; v.load(); }
-      }
-
-      tryPlay(v);
-      v.addEventListener("loadeddata", function () { tryPlay(v); });
-      v.addEventListener("canplay", function () { tryPlay(v); });
-    });
-
-    // First interaction kicks any still-paused video (covers blocked autoplay).
-    function kick() { videos.forEach(function (v) { if (v.paused) tryPlay(v); }); }
-    ["touchstart", "pointerdown", "click", "scroll", "keydown"].forEach(function (evt) {
-      window.addEventListener(evt, kick, { once: true, passive: true });
-    });
-
-    // iOS pauses media when the tab/app is backgrounded — resume on return.
-    document.addEventListener("visibilitychange", function () {
-      if (!document.hidden) kick();
-    });
-  })();
-
-  /* ---------- Preloader (looping brand video) ---------- */
-  var preloader = document.getElementById("preloader");
-  if (preloader) {
-    var MIN_MS = prefersReducedMotion ? 400 : 2200; // let one beat of the video breathe
-    var MAX_MS = 6000;                               // hard fallback if assets stall
+    var preloader = document.getElementById("preloader");
+    if (!preloader) { document.body.classList.remove("is-loading"); return; }
+    var MIN_MS = prefersReducedMotion ? 300 : 2200;
+    var MAX_MS = 5000; // never stuck longer than this, even if assets stall
     var t0 = Date.now();
     var dismissed = false;
-
     function dismiss() {
       if (dismissed) return;
       dismissed = true;
@@ -77,17 +27,27 @@
         if (preloader.parentNode) preloader.parentNode.removeChild(preloader);
       }, 1000);
     }
-    function readyDismiss() {
-      window.setTimeout(dismiss, Math.max(0, MIN_MS - (Date.now() - t0)));
-    }
-
+    function readyDismiss() { window.setTimeout(dismiss, Math.max(0, MIN_MS - (Date.now() - t0))); }
     if (document.readyState === "complete") readyDismiss();
     else window.addEventListener("load", readyDismiss);
     window.setTimeout(dismiss, MAX_MS);
-    preloader.addEventListener("click", dismiss); // tap to skip
-  } else {
-    document.body.classList.remove("is-loading");
-  }
+    preloader.addEventListener("click", dismiss);
+  })();
+
+  /* ---------- Background videos — the simple, proven approach (same as the Sergio sites) ----------
+     Pure-HTML autoplay does the work: muted + loop + playsinline + a single <source>.
+     JS only gives a play() nudge and retries on the first tap if the OS blocked autoplay. */
+  (function () {
+    if (prefersReducedMotion) return;
+    var videos = Array.prototype.slice.call(document.querySelectorAll("video"));
+    if (!videos.length) return;
+    function play(v) { var p = v.play && v.play(); if (p && p.catch) p.catch(function () {}); }
+    videos.forEach(function (v) { v.muted = true; play(v); });
+    function kick() { videos.forEach(function (v) { if (v.paused) play(v); }); }
+    ["touchstart", "click", "scroll"].forEach(function (e) {
+      window.addEventListener(e, kick, { once: true, passive: true });
+    });
+  })();
 
   /* ---------- Sticky header ---------- */
   var header = document.getElementById("siteHeader");
