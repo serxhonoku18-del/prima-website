@@ -152,6 +152,18 @@ h2 em, h1 em {
 }
 body.is-loading { overflow: hidden; }
 
+/* Mobile: the 16:9 footage over-crops ~3.8x in portrait and reads as a blurry
+   fragment. Let it recede to an ambient texture and make the logo the hero. */
+@media (max-width: 768px) {
+  .preloader-overlay {
+    background:
+      radial-gradient(circle at center, rgba(12, 10, 6, .58), rgba(12, 10, 6, .93) 78%),
+      linear-gradient(to top, rgba(12, 10, 6, .9), rgba(12, 10, 6, .45) 60%);
+  }
+  .preloader-logo { width: clamp(128px, 40vw, 168px); }
+  .preloader-tagline { margin-top: 1.6rem; }
+}
+
 /* ---------- Buttons & links ---------- */
 .btn {
   display: inline-flex; align-items: center; justify-content: center;
