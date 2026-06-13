@@ -8,12 +8,57 @@
 
   var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* ---------- Nudge background videos to play ---------- */
-  Array.prototype.forEach.call(document.querySelectorAll("video"), function (v) {
-    var tryPlay = function () { var p = v.play(); if (p && p.catch) p.catch(function () {}); };
-    if (v.readyState >= 2) tryPlay();
-    v.addEventListener("canplay", tryPlay, { once: true });
-  });
+  /* ---------- Background video playback (mobile-first, bulletproof) ----------
+     Sources live in the HTML <source> (the most reliable way to autoplay on iOS).
+     Here we: force muted/inline, upgrade the hero to a crisper file on desktop,
+     keep retrying play(), and start on the first user gesture if the OS blocked
+     autoplay (e.g. iOS Low Power Mode / Android Data Saver). */
+  (function () {
+    var videos = Array.prototype.slice.call(document.querySelectorAll("video"));
+    if (!videos.length) return;
+
+    var small = window.matchMedia("(max-width: 768px)").matches;
+    var save = navigator.connection && navigator.connection.saveData;
+
+    function tryPlay(v) {
+      if (prefersReducedMotion) return;
+      var p = v.play();
+      if (p && p.catch) p.catch(function () {});
+    }
+
+    videos.forEach(function (v) {
+      v.muted = true;                 // required for autoplay everywhere
+      v.setAttribute("muted", "");
+      v.playsInline = true;
+      v.setAttribute("playsinline", "");
+      v.setAttribute("webkit-playsinline", "");
+
+      if (prefersReducedMotion) { v.removeAttribute("autoplay"); v.pause(); return; }
+
+      // Desktop only: upgrade the hero to webm / 1080p (the swap is hidden behind the preloader).
+      if (!small && !save && v.classList.contains("hero-video")) {
+        var hi = (v.getAttribute("data-webm") && v.canPlayType('video/webm; codecs="vp9"'))
+          ? v.getAttribute("data-webm")
+          : v.getAttribute("data-desktop");
+        if (hi) { v.src = hi; v.load(); }
+      }
+
+      tryPlay(v);
+      v.addEventListener("loadeddata", function () { tryPlay(v); });
+      v.addEventListener("canplay", function () { tryPlay(v); });
+    });
+
+    // First interaction kicks any still-paused video (covers blocked autoplay).
+    function kick() { videos.forEach(function (v) { if (v.paused) tryPlay(v); }); }
+    ["touchstart", "pointerdown", "click", "scroll", "keydown"].forEach(function (evt) {
+      window.addEventListener(evt, kick, { once: true, passive: true });
+    });
+
+    // iOS pauses media when the tab/app is backgrounded — resume on return.
+    document.addEventListener("visibilitychange", function () {
+      if (!document.hidden) kick();
+    });
+  })();
 
   /* ---------- Preloader (looping brand video) ---------- */
   var preloader = document.getElementById("preloader");

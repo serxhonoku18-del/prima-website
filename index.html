@@ -27,32 +27,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Albert+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="preconnect" href="https://images.unsplash.com">
-  <link rel="stylesheet" href="css/styles.css?v=2">
-
-  <!-- Pick the right video file per device, before first paint -->
-  <script>
-    window.__primaVideo = function (v) {
-      if (!v) return;
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return; // keep poster, no video
-      var small = window.matchMedia("(max-width: 768px)").matches;
-      var save = navigator.connection && navigator.connection.saveData;
-      // On phones, only the loading screen plays video; the hero stays a static poster (faster).
-      if ((small || save) && v.hasAttribute("data-mobile-static")) return;
-      var src;
-      if (small || save) { src = v.getAttribute("data-mobile"); }
-      else if (v.getAttribute("data-webm") && v.canPlayType('video/webm; codecs="vp9"')) { src = v.getAttribute("data-webm"); }
-      else { src = v.getAttribute("data-desktop"); }
-      // Direct src + muted property is far more reliable for mobile autoplay than an appended <source>.
-      v.muted = true;
-      v.setAttribute("muted", "");
-      v.setAttribute("webkit-playsinline", "");
-      v.src = src;
-      v.load();
-      var play = function () { var p = v.play(); if (p && p.catch) p.catch(function () {}); };
-      play();
-      v.addEventListener("canplay", play, { once: true });
-    };
-  </script>
+  <link rel="stylesheet" href="css/styles.css?v=3">
 
   <!-- Structured data -->
   <script type="application/ld+json">
@@ -84,9 +59,9 @@
 
   <!-- ============ PRELOADER ============ -->
   <div class="preloader" id="preloader" role="status" aria-label="Po ngarkohet faqja e PRIMA">
-    <video class="preloader-video" autoplay muted loop playsinline poster="media/poster.jpg" aria-hidden="true"
-           data-desktop="media/prima-loop.mp4" data-mobile="media/prima-loop-mobile.mp4" data-webm="media/prima-loop.webm"></video>
-    <script>window.__primaVideo(document.currentScript.previousElementSibling);</script>
+    <video class="preloader-video" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="media/poster.jpg" aria-hidden="true">
+      <source src="media/prima-loop-mobile.mp4" type="video/mp4">
+    </video>
     <div class="preloader-overlay"></div>
     <div class="preloader-content">
       <img class="preloader-logo" src="media/prima-logo.png" alt="PRIMA" width="140" height="140">
@@ -143,9 +118,10 @@
     <!-- ============ HERO ============ -->
     <section class="hero" id="top">
       <div class="hero-media" aria-hidden="true">
-        <video class="hero-video" autoplay muted loop playsinline poster="media/poster.jpg" data-mobile-static
-               data-desktop="media/prima-loop.mp4" data-mobile="media/prima-loop-mobile.mp4" data-webm="media/prima-loop.webm"></video>
-        <script>window.__primaVideo(document.currentScript.previousElementSibling);</script>
+        <video class="hero-video" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="media/poster.jpg"
+               data-desktop="media/prima-loop.mp4" data-webm="media/prima-loop.webm">
+          <source src="media/prima-loop-mobile.mp4" type="video/mp4">
+        </video>
         <div class="hero-overlay"></div>
       </div>
       <div class="container hero-content">
@@ -580,6 +556,6 @@
 
   <button class="back-to-top" id="backToTop" aria-label="Kthehu në krye">↑</button>
 
-  <script src="js/main.js?v=2" defer></script>
+  <script src="js/main.js?v=3" defer></script>
 </body>
 </html>
