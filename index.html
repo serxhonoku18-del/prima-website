@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PRIMA — Miell &amp; Pasta | Cilësia fillon nga gruri</title>
+  <meta name="description" content="PRIMA — prodhuesi më i madh i miellit dhe pastave në Shqipëri që nga viti 1995. Mulliri Bloja me 400 ton/ditë, 15 lloje miellrash, 45 lloje pastash me trafila bronzi nga gruri 100% italian.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#15110a">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="PRIMA">
+  <meta property="og:locale" content="sq_AL">
+  <meta property="og:title" content="PRIMA — Miell &amp; Pasta | Cilësia fillon nga gruri">
+  <meta property="og:description" content="Prodhuesi më i madh i miellit dhe pastave në Shqipëri që nga viti 1995. Cilësia fillon nga gruri.">
+  <meta property="og:image" content="media/poster.jpg">
+  <meta property="og:image:alt" content="Çantë mielli Prima në një fushë gruri">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="media/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="media/favicon.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Albert+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="preconnect" href="https://images.unsplash.com">
+  <link rel="stylesheet" href="css/styles.css?v=2">
+
+  <!-- Pick the right video file per device, before first paint -->
+  <script>
+    window.__primaVideo = function (v) {
+      if (!v) return;
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return; // keep poster, no video
+      var small = window.matchMedia("(max-width: 768px)").matches;
+      var save = navigator.connection && navigator.connection.saveData;
+      // On phones, only the loading screen plays video; the hero stays a static poster (faster).
+      if ((small || save) && v.hasAttribute("data-mobile-static")) return;
+      var src;
+      if (small || save) { src = v.getAttribute("data-mobile"); }
+      else if (v.getAttribute("data-webm") && v.canPlayType('video/webm; codecs="vp9"')) { src = v.getAttribute("data-webm"); }
+      else { src = v.getAttribute("data-desktop"); }
+      // Direct src + muted property is far more reliable for mobile autoplay than an appended <source>.
+      v.muted = true;
+      v.setAttribute("muted", "");
+      v.setAttribute("webkit-playsinline", "");
+      v.src = src;
+      v.load();
+      var play = function () { var p = v.play(); if (p && p.catch) p.catch(function () {}); };
+      play();
+      v.addEventListener("canplay", play, { once: true });
+    };
+  </script>
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "PRIMA SHPK",
+    "slogan": "Cilësia fillon nga gruri",
+    "foundingDate": "1995",
+    "description": "Prodhues mielli dhe pastash në Shqipëri: Mielli Prima, Prima Manitoba, Semolina, Pasta Artizanale dhe Pasta Industriale.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rruga Konferenca e Pezës",
+      "addressLocality": "Tiranë",
+      "addressCountry": "AL"
+    },
+    "telephone": "+355 68 60 59 888",
+    "email": "info@prima.al",
+    "url": "https://www.prima.al",
+    "sameAs": [
+      "https://www.instagram.com/mielli.pasta.prima",
+      "https://www.facebook.com/primashpk",
+      "https://www.linkedin.com/company/prima-produkte-mielli-dhe-makaronash"
+    ]
+  }
+  </script>
+</head>
+<body class="is-loading">
+
+  <!-- ============ PRELOADER ============ -->
+  <div class="preloader" id="preloader" role="status" aria-label="Po ngarkohet faqja e PRIMA">
+    <video class="preloader-video" autoplay muted loop playsinline poster="media/poster.jpg" aria-hidden="true"
+           data-desktop="media/prima-loop.mp4" data-mobile="media/prima-loop-mobile.mp4" data-webm="media/prima-loop.webm"></video>
+    <script>window.__primaVideo(document.currentScript.previousElementSibling);</script>
+    <div class="preloader-overlay"></div>
+    <div class="preloader-content">
+      <img class="preloader-logo" src="media/prima-logo.png" alt="PRIMA" width="140" height="140">
+      <p class="preloader-tagline">Cilësia fillon nga gruri</p>
+      <div class="preloader-bar"><span></span></div>
+    </div>
+  </div>
+
+  <a class="skip-link" href="#main">Kalo te përmbajtja</a>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="#top" class="brand" aria-label="PRIMA — kthehu në krye">
+        <img class="brand-mark" src="media/prima-logo.png" alt="" width="46" height="46">
+        <span class="brand-name">PRIMA<small>Miell &amp; Pasta</small></span>
+      </a>
+
+      <nav class="main-nav" aria-label="Kryesore">
+        <ul>
+          <li><a href="#kompania">Kompania</a></li>
+          <li><a href="#produktet">Produktet</a></li>
+          <li><a href="#cilesia">Cilësia</a></li>
+          <li><a href="#private-label">Private Label</a></li>
+          <li><a href="#lajme">Lajme</a></li>
+        </ul>
+      </nav>
+
+      <a href="#kontakt" class="btn btn-gold header-cta">Na Kontaktoni</a>
+
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileMenu" aria-label="Hap menunë">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile menu overlay -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <nav aria-label="Menuja mobile">
+      <ul>
+        <li><a href="#kompania">Kompania</a></li>
+        <li><a href="#produktet">Produktet</a></li>
+        <li><a href="#cilesia">Cilësia</a></li>
+        <li><a href="#private-label">Private Label</a></li>
+        <li><a href="#lajme">Lajme</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </nav>
+    <p class="mobile-menu-foot">Që nga 1995 · Tiranë, Shqipëri</p>
+  </div>
+
+  <main id="main">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="top">
+      <div class="hero-media" aria-hidden="true">
+        <video class="hero-video" autoplay muted loop playsinline poster="media/poster.jpg" data-mobile-static
+               data-desktop="media/prima-loop.mp4" data-mobile="media/prima-loop-mobile.mp4" data-webm="media/prima-loop.webm"></video>
+        <script>window.__primaVideo(document.currentScript.previousElementSibling);</script>
+        <div class="hero-overlay"></div>
+      </div>
+      <div class="container hero-content">
+        <p class="hero-kicker reveal-load" style="--d:.1s">Që nga viti 1995 — Tiranë, Shqipëri</p>
+        <h1 class="reveal-load" style="--d:.25s">Cilësia fillon<br>nga <em>gruri.</em></h1>
+        <p class="hero-lead reveal-load" style="--d:.45s">Prodhuesi më i madh i miellit dhe pastave në Shqipëri. Nga mulliri Bloja te trafilat e bronzit — sjellim përsosmëri në çdo kokërr, çdo ditë.</p>
+        <div class="hero-actions reveal-load" style="--d:.6s">
+          <a href="#produktet" class="btn btn-gold">Zbuloni Produktet</a>
+          <a href="#kompania" class="btn btn-ghost">Rreth Kompanisë</a>
+        </div>
+      </div>
+      <a href="#kompania" class="scroll-cue" aria-label="Zbrit më poshtë">
+        <span class="scroll-cue-line"></span>
+        <span class="scroll-cue-text">Shfleto</span>
+      </a>
+    </section>
+
+    <!-- ============ TICKER ============ -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track">
+        <span>Mielli Prima</span><i>✦</i><span>Prima Manitoba</span><i>✦</i><span>Semolina</span><i>✦</i><span>Pasta Artizanale</span><i>✦</i><span>Pasta Industriale</span><i>✦</i><span>Trafila Bronzi</span><i>✦</i><span>0% Kimikate</span><i>✦</i>
+        <span>Mielli Prima</span><i>✦</i><span>Prima Manitoba</span><i>✦</i><span>Semolina</span><i>✦</i><span>Pasta Artizanale</span><i>✦</i><span>Pasta Industriale</span><i>✦</i><span>Trafila Bronzi</span><i>✦</i><span>0% Kimikate</span><i>✦</i>
+      </div>
+    </div>
+
+    <!-- ============ KOMPANIA ============ -->
+    <section class="about section" id="kompania">
+      <div class="container about-grid">
+        <div class="about-media reveal">
+          <figure class="about-photo-main">
+            <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=900&q=75&auto=format&fit=crop"
+                 alt="Përgatitja e brumit me miell Prima" loading="lazy">
+          </figure>
+          <figure class="about-photo-small">
+            <img src="https://images.unsplash.com/photo-1437252611977-07f74518abd7?w=600&q=75&auto=format&fit=crop"
+                 alt="Kallinj gruri në fushë" loading="lazy">
+          </figure>
+          <div class="about-badge">
+            <span class="about-badge-num">1995</span>
+            <span class="about-badge-label">Që nga viti</span>
+          </div>
+        </div>
+        <div class="about-copy">
+          <p class="eyebrow reveal">Kompania</p>
+          <h2 class="reveal">Tre fabrika.<br>Një standard: <em>përsosmëria.</em></h2>
+          <p class="reveal">Kompania PRIMA përbëhet nga tre fabrika: mulliri i miellit <strong>Bloja</strong> — i themeluar në 1995 dhe më i madhi në Shqipëri me 400 ton përpunim në ditë; fabrika e <strong>Semolinës</strong> nga gruri i fortë me 100 ton në ditë; dhe fabrika e <strong>pastave Prima</strong>, me tre linja dhe kapacitet 60 ton në ditë.</p>
+          <p class="reveal">Mielli dhe semolina prodhohen me teknologjinë më moderne italiane, ndërsa pastat dalin nga linjat <strong>PAVAN</strong> — ndër kompanitë më të mira në Itali e botë. Rezultati: 15 lloje miellrash dhe 45 lloje pastash, të gjitha me të njëjtin premtim cilësie.</p>
+          <ul class="about-trust reveal" aria-label="Shifra kryesore">
+            <li><strong>400</strong> ton miell/ditë</li>
+            <li><strong>15</strong> lloje miellrash</li>
+            <li><strong>45</strong> lloje pastash</li>
+          </ul>
+          <a href="#cilesia" class="text-link reveal">Shihni si e prodhojmë <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SHIFRAT ============ -->
+    <section class="stats" aria-label="Shifrat e kompanisë">
+      <div class="container stats-grid">
+        <div class="stat reveal"><span class="stat-num" data-count="30">0</span><span class="stat-label">Vjet përvojë</span></div>
+        <div class="stat reveal"><span class="stat-num" data-count="3">0</span><span class="stat-label">Fabrika prodhimi</span></div>
+        <div class="stat reveal"><span class="stat-num" data-count="15">0</span><span class="stat-label">Lloje miellrash</span></div>
+        <div class="stat reveal"><span class="stat-num" data-count="45">0</span><span class="stat-label">Lloje pastash</span></div>
+      </div>
+    </section>
+
+    <!-- ============ PRODUKTET ============ -->
+    <section class="products section" id="produktet">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow reveal">Produktet Tona</p>
+          <h2 class="reveal">Pesë linja, <em>një cilësi.</em></h2>
+          <p class="section-sub reveal">Nga mielli i përditshëm te pastat artizanale me trafila bronzi — i gjithë portofoli mban të njëjtin premtim.</p>
+        </div>
+
+        <div class="product-grid">
+          <article class="product-card product-card-wide reveal">
+            <div class="product-media">
+              <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=1100&q=75&auto=format&fit=crop" alt="Bukë e pjekur me Miellin Prima" loading="lazy">
+            </div>
+            <div class="product-body">
+              <span class="product-index">01</span>
+              <h3>Mielli Prima</h3>
+              <p>Miell Tip 400 &amp; 450 për bukë, integral, semolinë, ëmbëlsira, byrek dhe pica — në paketime 1 kg dhe 25 kg, për shtëpinë dhe profesionistët.</p>
+              <a href="#kontakt" class="text-link">Kërkoni katalogun <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="product-card reveal">
+            <div class="product-media">
+              <img src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?w=800&q=75&auto=format&fit=crop" alt="Produkte furre nga mielli Prima Manitoba" loading="lazy">
+            </div>
+            <div class="product-body">
+              <span class="product-index">02</span>
+              <h3>Prima Manitoba</h3>
+              <p>Miell force nga gruri kanadez Manitoba — universal, për pica, ëmbëlsira dhe petë e byrek. Ideal për brumëra me fermentim të gjatë.</p>
+              <a href="#kontakt" class="text-link">Kërkoni katalogun <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="product-card reveal">
+            <div class="product-media">
+              <img src="https://images.unsplash.com/photo-1486887396153-fa416526c108?w=800&q=75&auto=format&fit=crop" alt="Semolinë nga gruri i fortë" loading="lazy">
+            </div>
+            <div class="product-body">
+              <span class="product-index">03</span>
+              <h3>Semolina</h3>
+              <p>E prodhuar nga cilësia më e lartë e grurit të fortë — italian, kanadez (Western Amber Durum) dhe vendas. Paketim me letër ose qese.</p>
+              <a href="#kontakt" class="text-link">Kërkoni katalogun <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="product-card reveal">
+            <div class="product-media">
+              <img src="https://images.unsplash.com/photo-1551462147-ff29053bfc14?w=800&q=75&auto=format&fit=crop" alt="Pasta artizanale me trafila bronzi" loading="lazy">
+            </div>
+            <div class="product-body">
+              <span class="product-index">04</span>
+              <h3>Pasta Artizanale <span class="badge-premium">Premium</span></h3>
+              <p>Nga 100% gruri italian, me trafila bronzi dhe tharje e ngadaltë. <strong>0% pesticide, 0% glifosat, 0% GMO.</strong> E punuar si dikur.</p>
+              <a href="#kontakt" class="text-link">Kërkoni katalogun <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+
+          <article class="product-card product-card-wide reveal">
+            <div class="product-media">
+              <img src="https://images.unsplash.com/photo-1481931098730-318b6f776db0?w=1100&q=75&auto=format&fit=crop" alt="Pjata me pasta industriale Prima" loading="lazy">
+            </div>
+            <div class="product-body">
+              <span class="product-index">05</span>
+              <h3>Pasta Industriale</h3>
+              <p>Mbi 40 forma — nga spaghetti e penne te fusilli, conchiglie e stelline — nga gruri i fortë italian, për tregun vendas dhe atë të eksportit.</p>
+              <a href="#kontakt" class="text-link">Kërkoni katalogun <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CILËSIA / PROCESI ============ -->
+    <section class="process section" id="cilesia">
+      <div class="container">
+        <div class="section-head section-head-light">
+          <p class="eyebrow reveal">Cilësia</p>
+          <h2 class="reveal">Përsosmëri në <em>çdo kokërr.</em></h2>
+        </div>
+
+        <ol class="timeline">
+          <li class="timeline-step reveal">
+            <span class="timeline-num">01</span>
+            <div>
+              <h3>Gruri</h3>
+              <p>Përzgjedhim grurin më të mirë — italian, kanadez Manitoba dhe vendas — dhe e kontrollojmë kokërr pas kokrre para se të hyjë në mulli.</p>
+            </div>
+          </li>
+          <li class="timeline-step reveal">
+            <span class="timeline-num">02</span>
+            <div>
+              <h3>Bluarja</h3>
+              <p>Mulliri Bloja, më i madhi në Shqipëri, përpunon deri në 400 ton në ditë me teknologjinë më moderne italiane.</p>
+            </div>
+          </li>
+          <li class="timeline-step reveal">
+            <span class="timeline-num">03</span>
+            <div>
+              <h3>Pastat me trafila bronzi</h3>
+              <p>Tre linja PAVAN — pasta lunga, pasta corta dhe nidi artizanale. Trafilat e bronzit japin sipërfaqe të ashpër që e kap salcën.</p>
+            </div>
+          </li>
+          <li class="timeline-step reveal">
+            <span class="timeline-num">04</span>
+            <div>
+              <h3>Laboratori</h3>
+              <p>Qendra jonë e Kërkimit dhe Kontrollit kryen çdo ditë analiza kimike e fizike dhe zhvillon produkte të reja sipas kërkesës së klientit.</p>
+            </div>
+          </li>
+          <li class="timeline-step reveal">
+            <span class="timeline-num">05</span>
+            <div>
+              <h3>Paketimi &amp; eksporti</h3>
+              <p>Paketim modern me gjurmueshmëri të plotë — produktet tona udhëtojnë drejt tregjeve brenda e jashtë vendit.</p>
+            </div>
+          </li>
+        </ol>
+
+        <div class="certs reveal" aria-label="Certifikimet">
+          <p class="certs-title">Të certifikuar sipas standardeve ndërkombëtare</p>
+          <ul>
+            <li>ISO 22000</li>
+            <li>ISO 9001</li>
+            <li>HACCP</li>
+            <li>UNI 10854</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PSE PRIMA ============ -->
+    <section class="why section" id="pse-prima">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow reveal">Pse Prima</p>
+          <h2 class="reveal">Ajo për të cilën <em>na besojnë.</em></h2>
+        </div>
+        <div class="why-grid">
+          <div class="why-item reveal">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v20M12 6c-2.5 0-4-1.5-4-3.5C10.5 2.5 12 4 12 6zm0 0c2.5 0 4-1.5 4-3.5C13.5 2.5 12 4 12 6zm0 5c-2.5 0-4-1.5-4-3.5 2.5 0 4 1.5 4 3.5zm0 0c2.5 0 4-1.5 4-3.5-2.5 0-4 1.5-4 3.5zm0 5c-2.5 0-4-1.5-4-3.5 2.5 0 4 1.5 4 3.5zm0 0c2.5 0 4-1.5 4-3.5-2.5 0-4 1.5-4 3.5z"/></svg>
+            <h3>100% grurë i fortë</h3>
+            <p>Pastat tona dalin nga gruri më i mirë italian dhe kanadez, i përzgjedhur me kujdes.</p>
+          </div>
+          <div class="why-item reveal">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l8 3v6c0 5-3.5 9.5-8 11-4.5-1.5-8-6-8-11V5l8-3z"/><path d="M8.5 12l2.5 2.5 4.5-4.5"/></svg>
+            <h3>0% kimikate</h3>
+            <p>Pasta Premium pa pesticide, pa glifosat dhe pa GMO — vetëm grurë dhe ujë.</p>
+          </div>
+          <div class="why-item reveal">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18M6 6l12 12M18 6L6 18"/></svg>
+            <h3>Trafila bronzi</h3>
+            <p>Tërheqja në bronz jep teksturën autentike që e dallon pastën artizanale.</p>
+          </div>
+          <div class="why-item reveal">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21V9l6 3V9l6 3V9l6 3v9H3z"/><path d="M7 21v-4m5 4v-4m5 4v-4"/></svg>
+            <h3>Teknologjia PAVAN</h3>
+            <p>Linja prodhimi nga njëra prej kompanive më të mira në Itali dhe në botë.</p>
+          </div>
+          <div class="why-item reveal">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+            <h3>30 vjet përvojë</h3>
+            <p>Që nga viti 1995, lider i tregut shqiptar të miellit dhe pastave.</p>
+          </div>
+          <div class="why-item reveal">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 4 5.5 4 9s-1.5 6.5-4 9c-2.5-2.5-4-5.5-4-9s1.5-6.5 4-9z"/></svg>
+            <h3>Cilësi e certifikuar</h3>
+            <p>ISO 22000, ISO 9001, HACCP dhe UNI 10854 — laboratori ynë teston çdo lot.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PRIVATE LABEL ============ -->
+    <section class="private section" id="private-label">
+      <div class="container private-grid">
+        <div class="private-copy reveal">
+          <p class="eyebrow eyebrow-light">Private Label</p>
+          <h2>Marka juaj, <em>cilësia jonë.</em></h2>
+          <p>PRIMA pranon porosi me <strong>Private Label</strong> për të gjitha produktet e miellit dhe të pastave. Logoja dhe paketimi juaj, prodhuar me të njëjtin standard që na bëri lider të tregut.</p>
+          <a href="#kontakt" class="btn btn-gold">Kërkoni një ofertë</a>
+        </div>
+        <div class="private-card reveal" aria-hidden="true">
+          <div class="private-pack">
+            <span class="private-pack-label">Logoja<br>Juaj<br>Këtu</span>
+          </div>
+          <p class="private-note">Miell &amp; pasta · paketim sipas markës suaj</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ LAJME ============ -->
+    <section class="news section" id="lajme">
+      <div class="container">
+        <div class="section-head section-head-row">
+          <div>
+            <p class="eyebrow reveal">Lajme &amp; Përditësime</p>
+            <h2 class="reveal">Nga <em>fabrika jonë.</em></h2>
+          </div>
+          <a href="#kontakt" class="text-link reveal">Për media <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="news-grid">
+          <article class="news-card reveal">
+            <div class="news-media">
+              <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=75&auto=format&fit=crop" alt="Inxhinier duke kontrolluar makineritë PAVAN" loading="lazy">
+              <time class="news-date" datetime="2026-05">Maj 2026</time>
+            </div>
+            <div class="news-body">
+              <span class="news-tag">Prodhimi</span>
+              <h3>Brenda mullirit Bloja: 400 ton grurë çdo ditë</h3>
+              <p>Një vështrim nga afër mbi mullirin më të madh në Shqipëri dhe teknologjinë italiane që e mban.</p>
+              <a href="#kontakt" class="text-link">Lexo më shumë <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+          <article class="news-card reveal">
+            <div class="news-media">
+              <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&q=75&auto=format&fit=crop" alt="Analiste laboratori duke kryer teste cilësie" loading="lazy">
+              <time class="news-date" datetime="2026-04">Prill 2026</time>
+            </div>
+            <div class="news-body">
+              <span class="news-tag">Cilësia</span>
+              <h3>Pasta Premium me 0% kimikate</h3>
+              <p>Si e garantojmë pastën artizanale pa pesticide, pa glifosat dhe pa GMO — nga fusha te kutia.</p>
+              <a href="#kontakt" class="text-link">Lexo më shumë <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+          <article class="news-card reveal">
+            <div class="news-media">
+              <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=75&auto=format&fit=crop" alt="Përgatitje gatimi me produktet Prima" loading="lazy">
+              <time class="news-date" datetime="2026-03">Mars 2026</time>
+            </div>
+            <div class="news-body">
+              <span class="news-tag">Kompania</span>
+              <h3>Private Label: marka juaj, cilësia Prima</h3>
+              <p>Gjithnjë e më shumë partnerë zgjedhin paketimin me markën e tyre për miell e pasta.</p>
+              <a href="#kontakt" class="text-link">Lexo më shumë <span aria-hidden="true">→</span></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ KONTAKT ============ -->
+    <section class="contact section" id="kontakt">
+      <div class="container contact-grid">
+        <div class="contact-info">
+          <p class="eyebrow eyebrow-light reveal">Kontakt</p>
+          <h2 class="reveal">Le të vendosim diçka <em>të mirë</em> në tryezë.</h2>
+          <p class="reveal">Distributorë, furra, pastiçeri dhe partnerë biznesi — na tregoni çfarë ju nevojitet dhe ekipi ynë do t'ju përgjigjet brenda një dite pune.</p>
+
+          <ul class="contact-details reveal">
+            <li>
+              <span class="contact-label">Vizitoni</span>
+              <span>Rruga "Konferenca e Pezës"<br>Tiranë, Shqipëri</span>
+            </li>
+            <li>
+              <span class="contact-label">Telefon</span>
+              <a href="tel:+355686059888">+355 68 60 59 888</a>
+            </li>
+            <li>
+              <span class="contact-label">Email</span>
+              <a href="mailto:info@prima.al">info@prima.al</a>
+            </li>
+          </ul>
+
+          <div class="socials reveal" aria-label="Rrjetet sociale">
+            <a href="https://www.instagram.com/mielli.pasta.prima" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.2" class="dot"/></svg></a>
+            <a href="https://www.facebook.com/primashpk" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 21v-7.5h2.8l.5-3.2h-3.3V8.2c0-.9.4-1.7 1.8-1.7h1.6V3.7s-1.3-.2-2.6-.2c-2.7 0-4.4 1.6-4.4 4.4v2.4H8v3.2h2.9V21"/></svg></a>
+            <a href="https://www.linkedin.com/company/prima-produkte-mielli-dhe-makaronash" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="9" width="4" height="12"/><circle cx="5" cy="5" r="2"/><path d="M11 21v-7c0-2 1.5-3.5 3.5-3.5S18 12 18 14v7"/><path d="M11 9v12"/></svg></a>
+          </div>
+
+          <div class="contact-map reveal">
+            <iframe
+              title="Vendndodhja e PRIMA — Tiranë"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=19.7200%2C41.2900%2C19.8700%2C41.3600&layer=mapnik&marker=41.3250%2C19.7950"
+              loading="lazy"></iframe>
+          </div>
+        </div>
+
+        <form class="contact-form reveal" id="contactForm" novalidate>
+          <h3>Na dërgoni një mesazh</h3>
+          <div class="form-row">
+            <div class="form-field">
+              <input type="text" id="name" name="name" placeholder=" " required autocomplete="name">
+              <label for="name">Emri i plotë</label>
+            </div>
+            <div class="form-field">
+              <input type="email" id="email" name="email" placeholder=" " required autocomplete="email">
+              <label for="email">Adresa email</label>
+            </div>
+          </div>
+          <div class="form-field">
+            <input type="text" id="company" name="company" placeholder=" " autocomplete="organization">
+            <label for="company">Kompania (opsionale)</label>
+          </div>
+          <div class="form-field">
+            <select id="topic" name="topic" required>
+              <option value="" selected disabled hidden></option>
+              <option>Bashkëpunim biznesi</option>
+              <option>Distribucion</option>
+              <option>Private Label</option>
+              <option>Katalogu i produkteve</option>
+              <option>Media &amp; shtyp</option>
+              <option>Tjetër</option>
+            </select>
+            <label for="topic">Jam i interesuar për…</label>
+          </div>
+          <div class="form-field">
+            <textarea id="message" name="message" rows="4" placeholder=" " required></textarea>
+            <label for="message">Mesazhi juaj</label>
+          </div>
+          <button type="submit" class="btn btn-gold btn-block">Dërgo Mesazhin</button>
+          <p class="form-note" id="formNote" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="#top" class="brand brand-footer" aria-label="PRIMA — kthehu në krye">
+          <img class="brand-mark" src="media/prima-logo.png" alt="" width="46" height="46">
+          <span class="brand-name">PRIMA<small>Miell &amp; Pasta</small></span>
+        </a>
+        <p>Prodhuesi më i madh i miellit dhe pastave në Shqipëri që nga viti 1995. Cilësia fillon nga gruri.</p>
+      </div>
+      <nav class="footer-col" aria-label="Footer — kompania">
+        <h4>Kompania</h4>
+        <ul>
+          <li><a href="#kompania">Kompania</a></li>
+          <li><a href="#cilesia">Cilësia</a></li>
+          <li><a href="#private-label">Private Label</a></li>
+          <li><a href="#lajme">Lajme</a></li>
+        </ul>
+      </nav>
+      <nav class="footer-col" aria-label="Footer — produktet">
+        <h4>Produktet</h4>
+        <ul>
+          <li><a href="#produktet">Mielli Prima</a></li>
+          <li><a href="#produktet">Prima Manitoba</a></li>
+          <li><a href="#produktet">Semolina</a></li>
+          <li><a href="#produktet">Pasta Artizanale</a></li>
+          <li><a href="#produktet">Pasta Industriale</a></li>
+        </ul>
+      </nav>
+      <div class="footer-col footer-newsletter">
+        <h4>Buletini</h4>
+        <p>Lajme nga prodhimi dhe receta, disa herë në vit.</p>
+        <form class="newsletter-form" id="newsletterForm" novalidate>
+          <label class="sr-only" for="newsletterEmail">Adresa email</label>
+          <input type="email" id="newsletterEmail" name="email" autocomplete="email" placeholder="ju@kompania.com" required>
+          <button type="submit" class="btn btn-gold" aria-label="Abonohu">→</button>
+        </form>
+        <p class="form-note" id="newsletterNote" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© 2026 PRIMA SHPK · Rruga "Konferenca e Pezës", Tiranë · +355 68 60 59 888</p>
+      <p class="footer-fine">Faqe demonstrative, frymëzuar nga prima.al. Foto ilustruese: Unsplash.</p>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop" aria-label="Kthehu në krye">↑</button>
+
+  <script src="js/main.js?v=2" defer></script>
+</body>
+</html>

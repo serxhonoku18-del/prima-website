@@ -1,0 +1,9 @@
+# Raw source media (the site uses the optimized files in /media instead)
+brand-assets/
+
+# Local build artifacts
+*.zip
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
